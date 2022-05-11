@@ -18,9 +18,9 @@ json_unnest.data.frame <- function(data, cols, ..., keep_empty = FALSE, ptype = 
     abort("The `cols` argument must be provided")
   }
   data %>%
-    mutate(across({{cols}}, ~ map(., ~jsonlite::fromJSON(.) %>% as_tibble()))) %>%
+    mutate(across({{ cols }}, ~ map(., ~ jsonlite::fromJSON(.) %>% as_tibble()))) %>%
     unnest(
-      {{cols}},
+      {{ cols }},
       keep_empty = keep_empty,
       ptype = ptype,
       names_sep = names_sep,
